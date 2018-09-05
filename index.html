@@ -159,6 +159,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-部署grafana&amp;prometheus 监控 docker容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="部署grafana-amp-prometheus监控docker容器"><a href="#部署grafana-amp-prometheus监控docker容器" class="headerlink" title="部署grafana&amp;prometheus监控docker容器"></a>部署grafana&amp;prometheus监控docker容器</h1><h3 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h3><p>主机：10.8.8.14 系统：centos7  docker版本：Docker version 17.12.1-ce </p>
+<p>组件：<strong>promtheus</strong>(监控数据整合存储查询)+ <strong>node-exporter</strong>(监控节点)+ <strong>cadvisor</strong>(监控容器)+ <strong>grafana</strong>（展示）</p>
+<p>部署方式：容器方式</p>
+<p>脚本位置：/home/master/docker-project</p>
+<p><strong>prometheus</strong>可以很好地记录任何纯数字时间序列。 它既适用于以机器为中心的监控，也适用于高度动态的面向服务的体系结构的监控。 在微服务世界中，它支持多维数据收集和查询是一个特别的优势。<br><strong>grafana</strong>丰富的图形化展示，支持多种后台监控服务平台接入。</p>
+<h3 id="一、部署容器命令启动"><a href="#一、部署容器命令启动" class="headerlink" title="一、部署容器命令启动"></a>一、部署容器命令启动</h3><p>1，启动cadvisor插件，并挂在docker数据目录。</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8001:8080 \</span><br><span class="line">  -<span class="ruby">-restart=always \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/:/rootfs:ro"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/var/run:/var/run:rw"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/sys:/sys:ro"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/var/lib/docker/:/var/lib/docker:ro"</span> \ </span></span><br><span class="line"><span class="ruby">  --name cadvisor \</span></span><br><span class="line"><span class="ruby">  google/cadvisor</span></span><br><span class="line"><span class="ruby"><span class="string">``</span><span class="string">` </span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="number">2</span>，启动node-exporter插件，监控各节点主机资源。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="string">``</span><span class="string">` </span></span></span><br><span class="line"><span class="ruby">docker run -d -p <span class="number">9100</span><span class="symbol">:</span><span class="number">9100</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/proc:/host/proc:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/sys:/host/sys:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/:/rootfs:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  --name prometheus_node-exporter  \</span></span><br><span class="line"><span class="ruby">  prom/node-exporter  \</span></span><br><span class="line"><span class="ruby">  --path.procfs /host/proc  \</span></span><br><span class="line"><span class="ruby">  --path.sysfs /host/sys  \</span></span><br><span class="line"><span class="ruby">  --collector.filesystem.ignored-mount-points <span class="string">"^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"</span>  \</span></span><br><span class="line"><span class="ruby">  --collector.filesystem.ignored-fs-types <span class="string">"^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"</span></span></span><br></pre></td></tr></table></figure>
+<p>3，配置并启动prometheus服务。</p>
+<p>prometheus.yml</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># my <span class="keyword">global</span> config</span><br><span class="line"></span><br><span class="line">globa<span class="variable">l:</span></span><br><span class="line">  scrape_interva<span class="variable">l:</span>     <span class="number">15</span>s # By default, scrape targets every <span class="number">15</span> seconds.</span><br><span class="line">  evaluation_interva<span class="variable">l:</span> <span class="number">15</span>s # By default, scrape targets every <span class="number">15</span> seconds.</span><br><span class="line"></span><br><span class="line"># Load rules once <span class="built_in">and</span> periodically evaluate them according <span class="keyword">to</span> the <span class="keyword">global</span> <span class="string">'evaluation_interval'</span>.</span><br><span class="line"></span><br><span class="line">rule_file<span class="variable">s:</span></span><br><span class="line">  # - <span class="string">"first.rules"</span></span><br><span class="line">  #   # - <span class="string">"second.rules"</span></span><br><span class="line"></span><br><span class="line">scrape_config<span class="variable">s:</span></span><br><span class="line">  - job_name: <span class="string">'prometheus'</span></span><br><span class="line">    static_config<span class="variable">s:</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'localhost:9090'</span>]</span><br><span class="line"></span><br><span class="line">  - job_name: <span class="string">'node'</span></span><br><span class="line">    static_config<span class="variable">s:</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'10.8.8.14:9100'</span>, <span class="string">'10.8.8.14:8001'</span>]</span><br><span class="line">        label<span class="variable">s:</span></span><br><span class="line">          <span class="keyword">en</span><span class="variable">v:</span> <span class="string">'prod_test'</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'10.8.8.12:9100'</span>, <span class="string">'10.8.8.12:8001'</span>]</span><br><span class="line">        label<span class="variable">s:</span></span><br><span class="line">          <span class="keyword">en</span><span class="variable">v:</span> <span class="string">'serviceCenter'</span></span><br></pre></td></tr></table></figure>
+<p>启动容器</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9090:9090 \</span><br><span class="line">  -<span class="ruby">-restart=always \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/home/docker-project/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/home/docker-db/prometheus:/prometheus"</span> \</span></span><br><span class="line"><span class="ruby">  --name prometheus \</span></span><br><span class="line"><span class="ruby">  prom/prometheus</span></span><br></pre></td></tr></table></figure>
+<p>4,启动grafana及持久化存储</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -<span class="ruby">v <span class="string">"/home/docker-db/grafana:/var/lib/grafana"</span> \</span></span><br><span class="line"><span class="ruby">  --name grafana-storage \</span></span><br><span class="line"><span class="ruby">  <span class="symbol">busybox:</span>latest</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">docker run  -d -p <span class="number">8000</span><span class="symbol">:</span><span class="number">3000</span>  \</span></span><br><span class="line"><span class="ruby">  --restart=always \</span></span><br><span class="line"><span class="ruby">  --name=grafana \</span></span><br><span class="line"><span class="ruby">  --volumes-from grafana-storage \</span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SECURITY_ADMIN_PASSWORD=123456"</span> \</span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_ENABLED=true"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_SKIP_VERIFY=true"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_HOST=smtp.exmail.qq.com:25"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_USER=monitor@*.com"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_PASSWORD=*"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_FROM_ADDRESS=monitor@*.com"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby"> grafana/grafana</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、检测状态"><a href="#二、检测状态" class="headerlink" title="二、检测状态"></a>二、检测状态</h3><p>访问10.8.8.14:8008进入prometheus服务界面，选择status–targets查看状态。</p>
+<p>访问10.8.8.14:8000，grafana web界面。</p>
+<p>添加prometheus数据库按需配置。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/部署grafana&prometheus 监控 docker容器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
