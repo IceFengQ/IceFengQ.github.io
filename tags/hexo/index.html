@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
-  <title>Nices blog</title>
+  <title>Tag: hexo | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="运维">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nices blog">
-<meta property="og:url" content="https://github.com/IceFengQ/index.html">
+<meta property="og:url" content="https://github.com/IceFengQ/tags/hexo/index.html">
 <meta property="og:site_name" content="Nices blog">
 <meta property="og:description" content="运维">
 <meta property="og:locale" content="zh-Hans">
@@ -133,160 +133,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-grafana+prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/grafana+prometheus/">docker+granafa+promethues</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/05/grafana+prometheus/" class="archive-article-date">
-  	<time datetime="2018-09-05T11:09:28.161Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="部署grafana-amp-prometheus监控docker容器"><a href="#部署grafana-amp-prometheus监控docker容器" class="headerlink" title="部署grafana&amp;prometheus监控docker容器"></a>部署grafana&amp;prometheus监控docker容器</h1><h3 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h3><p>主机：10.8.8.14 系统：centos7  docker版本：Docker version 17.12.1-ce </p>
-<p>组件：<strong>promtheus</strong>(监控数据整合存储查询)+ <strong>node-exporter</strong>(监控节点)+ <strong>cadvisor</strong>(监控容器)+ <strong>grafana</strong>（展示）</p>
-<p>部署方式：容器方式</p>
-<p>脚本位置：/home/master/docker-project</p>
-<p><strong>prometheus</strong>可以很好地记录任何纯数字时间序列。 它既适用于以机器为中心的监控，也适用于高度动态的面向服务的体系结构的监控。 在微服务世界中，它支持多维数据收集和查询是一个特别的优势。<br><strong>grafana</strong>丰富的图形化展示，支持多种后台监控服务平台接入。</p>
-<h3 id="一、部署容器命令启动"><a href="#一、部署容器命令启动" class="headerlink" title="一、部署容器命令启动"></a>一、部署容器命令启动</h3><p>1，启动cadvisor插件，并挂在docker数据目录。</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8001:8080 \</span><br><span class="line">  -<span class="ruby">-restart=always \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/:/rootfs:ro"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/var/run:/var/run:rw"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/sys:/sys:ro"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/var/lib/docker/:/var/lib/docker:ro"</span> \ </span></span><br><span class="line"><span class="ruby">  --name cadvisor \</span></span><br><span class="line"><span class="ruby">  google/cadvisor</span></span><br><span class="line"><span class="ruby"><span class="string">``</span><span class="string">` </span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="number">2</span>，启动node-exporter插件，监控各节点主机资源。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="string">``</span><span class="string">` </span></span></span><br><span class="line"><span class="ruby">docker run -d -p <span class="number">9100</span><span class="symbol">:</span><span class="number">9100</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/proc:/host/proc:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/sys:/host/sys:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/:/rootfs:ro"</span>  \</span></span><br><span class="line"><span class="ruby">  --name prometheus_node-exporter  \</span></span><br><span class="line"><span class="ruby">  prom/node-exporter  \</span></span><br><span class="line"><span class="ruby">  --path.procfs /host/proc  \</span></span><br><span class="line"><span class="ruby">  --path.sysfs /host/sys  \</span></span><br><span class="line"><span class="ruby">  --collector.filesystem.ignored-mount-points <span class="string">"^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"</span>  \</span></span><br><span class="line"><span class="ruby">  --collector.filesystem.ignored-fs-types <span class="string">"^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"</span></span></span><br></pre></td></tr></table></figure>
-<p>3，配置并启动prometheus服务。</p>
-<p>prometheus.yml</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># my <span class="keyword">global</span> config</span><br><span class="line"></span><br><span class="line">globa<span class="variable">l:</span></span><br><span class="line">  scrape_interva<span class="variable">l:</span>     <span class="number">15</span>s # By default, scrape targets every <span class="number">15</span> seconds.</span><br><span class="line">  evaluation_interva<span class="variable">l:</span> <span class="number">15</span>s # By default, scrape targets every <span class="number">15</span> seconds.</span><br><span class="line"></span><br><span class="line"># Load rules once <span class="built_in">and</span> periodically evaluate them according <span class="keyword">to</span> the <span class="keyword">global</span> <span class="string">'evaluation_interval'</span>.</span><br><span class="line"></span><br><span class="line">rule_file<span class="variable">s:</span></span><br><span class="line">  # - <span class="string">"first.rules"</span></span><br><span class="line">  #   # - <span class="string">"second.rules"</span></span><br><span class="line"></span><br><span class="line">scrape_config<span class="variable">s:</span></span><br><span class="line">  - job_name: <span class="string">'prometheus'</span></span><br><span class="line">    static_config<span class="variable">s:</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'localhost:9090'</span>]</span><br><span class="line"></span><br><span class="line">  - job_name: <span class="string">'node'</span></span><br><span class="line">    static_config<span class="variable">s:</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'10.8.8.14:9100'</span>, <span class="string">'10.8.8.14:8001'</span>]</span><br><span class="line">        label<span class="variable">s:</span></span><br><span class="line">          <span class="keyword">en</span><span class="variable">v:</span> <span class="string">'prod_test'</span></span><br><span class="line">      - target<span class="variable">s:</span> [<span class="string">'10.8.8.12:9100'</span>, <span class="string">'10.8.8.12:8001'</span>]</span><br><span class="line">        label<span class="variable">s:</span></span><br><span class="line">          <span class="keyword">en</span><span class="variable">v:</span> <span class="string">'serviceCenter'</span></span><br></pre></td></tr></table></figure>
-<p>启动容器</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9090:9090 \</span><br><span class="line">  -<span class="ruby">-restart=always \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/home/docker-project/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"</span> \</span></span><br><span class="line"><span class="ruby">  -v <span class="string">"/home/docker-db/prometheus:/prometheus"</span> \</span></span><br><span class="line"><span class="ruby">  --name prometheus \</span></span><br><span class="line"><span class="ruby">  prom/prometheus</span></span><br></pre></td></tr></table></figure>
-<p>4,启动grafana及持久化存储</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -<span class="ruby">v <span class="string">"/home/docker-db/grafana:/var/lib/grafana"</span> \</span></span><br><span class="line"><span class="ruby">  --name grafana-storage \</span></span><br><span class="line"><span class="ruby">  <span class="symbol">busybox:</span>latest</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">docker run  -d -p <span class="number">8000</span><span class="symbol">:</span><span class="number">3000</span>  \</span></span><br><span class="line"><span class="ruby">  --restart=always \</span></span><br><span class="line"><span class="ruby">  --name=grafana \</span></span><br><span class="line"><span class="ruby">  --volumes-from grafana-storage \</span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SECURITY_ADMIN_PASSWORD=123456"</span> \</span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_ENABLED=true"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_SKIP_VERIFY=true"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_HOST=smtp.exmail.qq.com:25"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_USER=monitor@*.com"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_PASSWORD=*"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby">  -e <span class="string">"GF_SMTP_FROM_ADDRESS=monitor@*.com"</span> \  <span class="comment">##测试未使用</span></span></span><br><span class="line"><span class="ruby"> grafana/grafana</span></span><br></pre></td></tr></table></figure>
-<h3 id="二、检测状态"><a href="#二、检测状态" class="headerlink" title="二、检测状态"></a>二、检测状态</h3><p>访问10.8.8.14:8008进入prometheus服务界面，选择status–targets查看状态。</p>
-<p>访问10.8.8.14:8000，grafana web界面。</p>
-<p>添加prometheus数据库按需配置。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
+    
       
       
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/05/grafana+prometheus/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo防丢失模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+        <div class="archives">
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/hexo防丢失模式/">hexo防丢失模式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/05/hexo防丢失模式/" class="archive-article-date">
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/05/hexo防丢失模式/" class="archive-article-date">
   	<time datetime="2018-09-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##原因<br>曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用</p>
-<p>##环境准备<br>本地环境macOS node v10.1.0 git v2.17.0</p>
-<p>##搭建流程</p>
-<ol>
-<li>创建仓库，IceFengQ.github.io；</li>
-<li>创建两个分支：master 与 hexo；</li>
-<li>设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；</li>
-<li>使用git clone <a href="mailto:git@github.com">git@github.com</a>:IceFengQ/IceFengQ.github.io.git拷贝仓库；</li>
-<li>在本地IceFengQ.github.io文件夹下通过Git bash依次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;</li>
-<li>修改_config.yml中的deploy参数，修改配置文件分支应为master；</li>
-<li>依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</li>
-<li>执行hexo g -d生成网站并部署到GitHub上。</li>
-<li>这样一来，在GitHub上的<a href="http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。" target="_blank" rel="noopener">http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</a></li>
-</ol>
-<p>##详细过程<br>1,在github上创建IceFengQ.github.io仓库,创建分支hexo,并且设为默认分支</p>
-<p>2,本地创建进入blog目录</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog</span><br><span class="line"><span class="built_in">cd</span>  blog</span><br></pre></td></tr></table></figure>
-<p>3,克隆仓库当本地</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github<span class="selector-class">.com</span>:IceFengQ/IceFengQ<span class="selector-class">.github</span><span class="selector-class">.io</span><span class="selector-class">.git</span></span><br></pre></td></tr></table></figure>
-<p>4,修改克隆仓库名称为icefeng,并创建新空目录IceFengQ.github.io作为hexo初始化</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv IceFengQ<span class="selector-class">.github</span><span class="selector-class">.io</span> icefeng</span><br><span class="line">mkdir IceFengQ<span class="selector-class">.github</span><span class="selector-class">.io</span></span><br></pre></td></tr></table></figure>
-<p>5,</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd IceFengQ.github.io</span><br><span class="line"><span class="built_in">npm</span> install hero -g</span><br><span class="line">hexo init</span><br><span class="line"><span class="built_in">npm</span> install</span><br><span class="line"><span class="built_in">npm</span> install hexo-deployer-git --save</span><br><span class="line">cp -r ..<span class="regexp">/icefeng/</span>.git ./    <span class="comment">#拷贝git仓库配置文件</span></span><br></pre></td></tr></table></figure>
-<p>注：此时分支应为hexo</p>
-<p>6,修改_config.yml中的deploy参数，修改配置文件分支应为master</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:IceFengQ/IceFengQ.github.io.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-<p>7,将配置文件提交到github远程仓库</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"next1"</span></span></span><br><span class="line"><span class="bash">git push origin hexo</span></span><br></pre></td></tr></table></figure>
-<p>8,发布<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span></span><br></pre></td></tr></table></figure></p>
-<p>成功后浏览器访问<a href="https://IceFengQ.github.io" target="_blank" rel="noopener">https://IceFengQ.github.io</a>，主题更换参考<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
-<p><strong>注：所有git仓库中操作都在hexo分支下</strong></p>
-<p>##日常使用流程</p>
-<p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理。</p>
-<ol>
-<li>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；</li>
-<li>然后才执行hexo g -d发布网站到master分支上。</li>
-</ol>
-<p>##本地资料丢失后的流程</p>
-<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
-<ol>
-<li>使用git clone <a href="mailto:git@github.com">git@github.com</a>:IceFengQ/IceFengQ.github.io.git拷贝仓库（默认分支为hexo）； 2. 在本地新拷贝的IceFengQ.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
         </div>
-      
-      
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/05/hexo防丢失模式/">hexo防丢失模式</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -298,41 +172,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/05/hexo防丢失模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -354,10 +206,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
