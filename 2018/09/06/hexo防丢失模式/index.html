@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
   <title>hexo防丢失模式 | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 ##环境准备本地环境macOS node v10.1.0 git v2.17.0 ##搭建流程  创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone g">
+  <meta name="description" content="原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 环境准备本地环境macOS node v10.1.0 git v2.17.0 搭建流程 创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone git@gith">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo防丢失模式">
-<meta property="og:url" content="https://github.com/IceFengQ/2018/09/05/hexo防丢失模式/index.html">
+<meta property="og:url" content="https://github.com/IceFengQ/2018/09/06/hexo防丢失模式/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="##原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 ##环境准备本地环境macOS node v10.1.0 git v2.17.0 ##搭建流程  创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone g">
+<meta property="og:description" content="原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 环境准备本地环境macOS node v10.1.0 git v2.17.0 搭建流程 创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone git@gith">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-06T07:09:07.880Z">
+<meta property="og:updated_time" content="2018-09-06T07:56:55.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo防丢失模式">
-<meta name="twitter:description" content="##原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 ##环境准备本地环境macOS node v10.1.0 git v2.17.0 ##搭建流程  创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone g">
+<meta name="twitter:description" content="原因曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用 环境准备本地环境macOS node v10.1.0 git v2.17.0 搭建流程 创建仓库，IceFengQ.github.io； 创建两个分支：master 与 hexo； 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）； 使用git clone git@gith">
   
   
     <link rel="icon" href="/favicon.png">
@@ -145,18 +145,17 @@
   
 
         
-        <a href="/2018/09/05/hexo防丢失模式/" class="archive-article-date">
-  	<time datetime="2018-09-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+        <a href="/2018/09/06/hexo防丢失模式/" class="archive-article-date">
+  	<time datetime="2018-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##原因<br>曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用</p>
-<p>##环境准备<br>本地环境macOS node v10.1.0 git v2.17.0</p>
-<p>##搭建流程</p>
-<ol>
+        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>曾经创建的博客因为本地文件丢失，更换电脑后无法继续使用，此方法为备份，并可在任意电脑克隆使用</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>本地环境macOS node v10.1.0 git v2.17.0</p>
+<h2 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h2><ol>
 <li>创建仓库，IceFengQ.github.io；</li>
 <li>创建两个分支：master 与 hexo；</li>
 <li>设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；</li>
@@ -165,9 +164,9 @@
 <li>修改_config.yml中的deploy参数，修改配置文件分支应为master；</li>
 <li>依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</li>
 <li>执行hexo g -d生成网站并部署到GitHub上。</li>
-<li>这样一来，在GitHub上的<a href="http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。" target="_blank" rel="noopener">http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</a></li>
+<li>这样一来，在GitHub上的<a href="http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。">http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</a></li>
 </ol>
-<p>##详细过程<br>1,在github上创建IceFengQ.github.io仓库,创建分支hexo,并且设为默认分支</p>
+<h2 id="详细过程"><a href="#详细过程" class="headerlink" title="详细过程"></a>详细过程</h2><p>1,在github上创建IceFengQ.github.io仓库,创建分支hexo,并且设为默认分支</p>
 <p>2,本地创建进入blog目录</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog</span><br><span class="line"><span class="built_in">cd</span>  blog</span><br></pre></td></tr></table></figure>
 <p>3,克隆仓库当本地</p>
@@ -182,16 +181,14 @@
 <p>7,将配置文件提交到github远程仓库</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"next1"</span></span></span><br><span class="line"><span class="bash">git push origin hexo</span></span><br></pre></td></tr></table></figure>
 <p>8,发布<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span></span><br></pre></td></tr></table></figure></p>
-<p>成功后浏览器访问<a href="https://IceFengQ.github.io" target="_blank" rel="noopener">https://IceFengQ.github.io</a>，主题更换参考<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>成功后浏览器访问<a href="https://IceFengQ.github.io">https://IceFengQ.github.io</a>，主题更换参考<a href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
 <p><strong>注：所有git仓库中操作都在hexo分支下</strong></p>
-<p>##日常使用流程</p>
-<p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理。</p>
+<h2 id="日常使用流程"><a href="#日常使用流程" class="headerlink" title="日常使用流程"></a>日常使用流程</h2><p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理。</p>
 <ol>
 <li>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；</li>
 <li>然后才执行hexo g -d发布网站到master分支上。</li>
 </ol>
-<p>##本地资料丢失后的流程</p>
-<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
+<h2 id="本地资料丢失后的流程"><a href="#本地资料丢失后的流程" class="headerlink" title="本地资料丢失后的流程"></a>本地资料丢失后的流程</h2><p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
 <ol>
 <li>使用git clone <a href="mailto:git@github.com">git@github.com</a>:IceFengQ/IceFengQ.github.io.git拷贝仓库（默认分支为hexo）； 2. 在本地新拷贝的IceFengQ.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
 </ol>
@@ -269,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/05/hexo防丢失模式/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/06/hexo防丢失模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,15 +280,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/05/grafana+prometheus/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          docker+granafa+promethues
-        
-      </div>
-    </a>
   
+    <a href="/2018/09/05/grafana+prometheus/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker+granafa+promethues</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -308,19 +301,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
