@@ -25,6 +25,8 @@ tags:
 ### 一、部署容器命令启动
 1，启动cadvisor插件，并挂在docker数据目录。
 
+<!--more-->
+
 ```
 docker run -d -p 8001:8080 \
   --restart=always \

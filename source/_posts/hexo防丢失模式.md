@@ -25,6 +25,8 @@ tags:
 8. 执行hexo g -d生成网站并部署到GitHub上。
 9. 这样一来，在GitHub上的http://IceFengQ.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。
 
+<!--more-->
+
 ## 详细过程
 1,在github上创建IceFengQ.github.io仓库,创建分支hexo,并且设为默认分支
 
