@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
-  <title>Archives: 2018 | Nices blog</title>
+  <title>Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运维">
-<meta property="og:type" content="website">
+  <meta name="description" content="#zabbix自定义监控 ##一，进程监控 1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10Se">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Nices blog">
-<meta property="og:url" content="https://github.com/IceFengQ/archives/2018/index.html">
+<meta property="og:url" content="https://github.com/IceFengQ/2018/09/14/zabbix自定义监控/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="运维">
+<meta property="og:description" content="#zabbix自定义监控 ##一，进程监控 1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10Se">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/assets/blogImg/monitor.png">
+<meta property="og:image" content="https://github.com/assets/blogImg/trigger.png">
+<meta property="og:updated_time" content="2018-09-14T03:32:06.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nices blog">
-<meta name="twitter:description" content="运维">
+<meta name="twitter:description" content="#zabbix自定义监控 ##一，进程监控 1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10Se">
+<meta name="twitter:image" content="https://github.com/assets/blogImg/monitor.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -131,157 +135,150 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zabbix自定义监控" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#zabbix自定义监控</p>
+<p>##一，进程监控</p>
+<p>1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">PidFile</span>=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line"><span class="attr">LogFile</span>=/var/log/zabbix/zabbix_agentd.log</span><br><span class="line"><span class="attr">LogFileSize</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">Server</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">ServerActive</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">Hostname</span>=Service</span><br><span class="line"><span class="attr">Include</span>=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line"><span class="attr">Timeout</span>=<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>2，在/etc/zabbix/zabbix_agentd.d/下定义自定义监控配置文件，例：检测某进程是否挂掉</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">UserParameter</span>=check_vp,/home/my/check_vp.sh</span><br></pre></td></tr></table></figure>
+<p>测试脚本如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ps -ef|grep vp|wc -l</span><br></pre></td></tr></table></figure>
+<p>增加脚本执行权限</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">chmod</span> +<span class="keyword">x</span> /home/<span class="keyword">my</span>/check_vp.sh</span><br></pre></td></tr></table></figure>
+<p>3，重启zabbix_agent</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart zabbix-agent</span></span><br></pre></td></tr></table></figure>
+<p>4，zabbix_server端执行zabbix_get检测,此处 <strong>-k</strong> 指定键值</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/bin/zabbix_get -s <span class="number">10.0</span><span class="number">.8</span><span class="number">.12</span> -k check_vp</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>5，配置server web端</p>
+<p>配置-主机-监控项</p>
+<p><img src="/assets/blogImg/monitor.png" alt="监控项"></p>
+<p>触发器</p>
+<p><img src="/assets/blogImg/trigger.png" alt="触发器"></p>
+<p>报警媒介</p>
+<p>动作</p>
+<p>##二，监控80端口连接数</p>
+<p>1，增加established.conf</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserParameter=established.<span class="built_in">count</span>,/home/<span class="keyword">my</span>/estab.sh</span><br></pre></td></tr></table></figure>
+<p>脚本如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">netstat -ant |grep <span class="string">':80'</span> |grep -c ESTABLISHED</span><br><span class="line"><span class="comment">##netstat -ant是查看当前连接数，grep ':80'是过滤出80端口，grep -c ESTABLISHED是统计ESTABLISHED有多少行</span></span><br></pre></td></tr></table></figure>
+<p>2，重启zabbix-agent客户端</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart zabbix-agent</span></span><br></pre></td></tr></table></figure>
+<p>3，server端zabbix_get测试</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/bin/zabbix_get -s <span class="number">10.0</span><span class="number">.8</span><span class="number">.12</span> -k established.count</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/14/zabbix自定义监控/" class="archive-article-date">
-  	<time datetime="2018-09-14T03:32:06.115Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/14/zabbix自定义监控/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/hexo防丢失模式/" class="archive-article-date">
-  	<time datetime="2018-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/06/hexo防丢失模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo防丢失模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/hexo防丢失模式/">hexo防丢失模式</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/git 包含git子文件夹怎么push？/" class="archive-article-date">
-  	<time datetime="2018-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/git 包含git子文件夹怎么push？/">git 包含git子文件夹怎么push？</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/05/grafana+prometheus/" class="archive-article-date">
-  	<time datetime="2018-09-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/grafana+prometheus/">docker+granafa+promethues</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">prometheus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -304,8 +301,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

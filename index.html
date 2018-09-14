@@ -133,6 +133,59 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zabbix自定义监控" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#zabbix自定义监控</p>
+<p>##一，进程监控</p>
+<p>1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">PidFile</span>=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line"><span class="attr">LogFile</span>=/var/log/zabbix/zabbix_agentd.log</span><br><span class="line"><span class="attr">LogFileSize</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">Server</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">ServerActive</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">Hostname</span>=Service</span><br><span class="line"><span class="attr">Include</span>=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line"><span class="attr">Timeout</span>=<span class="number">8</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/09/14/zabbix自定义监控/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/14/zabbix自定义监控/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo防丢失模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
