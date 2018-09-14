@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
-  <title>Nices blog</title>
+  <title>zabbix自定义监控 | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="zabbix自定义监控一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerA">
+  <meta name="description" content="一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerActive=10.0.">
+<meta name="keywords" content="zabbix">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nices blog">
-<meta property="og:url" content="https://github.com/IceFengQ/2018/09/14/zabbix自定义监控/index.html">
+<meta property="og:title" content="zabbix自定义监控">
+<meta property="og:url" content="https://github.com/IceFengQ/2018/09/13/zabbix自定义监控/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="zabbix自定义监控一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerA">
+<meta property="og:description" content="一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerActive=10.0.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/assets/blogImg/monitor.png">
 <meta property="og:image" content="https://github.com/assets/blogImg/trigger.png">
-<meta property="og:updated_time" content="2018-09-14T03:41:25.957Z">
+<meta property="og:updated_time" content="2018-09-14T03:45:56.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nices blog">
-<meta name="twitter:description" content="zabbix自定义监控一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerA">
+<meta name="twitter:title" content="zabbix自定义监控">
+<meta name="twitter:description" content="一，进程监控1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项 12345678PidFile=/var/run/zabbix/zabbix_agentd.pidLogFile=/var/log/zabbix/zabbix_agentd.logLogFileSize=0Server=10.0.8.10ServerActive=10.0.">
 <meta name="twitter:image" content="https://github.com/assets/blogImg/monitor.png">
   
   
@@ -138,9 +139,24 @@
             <article id="post-zabbix自定义监控" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zabbix自定义监控
+    </h1>
+  
+
+        
+        <a href="/2018/09/13/zabbix自定义监控/" class="archive-article-date">
+  	<time datetime="2018-09-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-13</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="zabbix自定义监控"><a href="#zabbix自定义监控" class="headerlink" title="zabbix自定义监控"></a>zabbix自定义监控</h1><h2 id="一，进程监控"><a href="#一，进程监控" class="headerlink" title="一，进程监控"></a>一，进程监控</h2><p>1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项</p>
+        <h2 id="一，进程监控"><a href="#一，进程监控" class="headerlink" title="一，进程监控"></a>一，进程监控</h2><p>1，在要监控的agent端编辑/etc/zabbix/zabbix_agent.conf,增加include选项</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">PidFile</span>=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line"><span class="attr">LogFile</span>=/var/log/zabbix/zabbix_agentd.log</span><br><span class="line"><span class="attr">LogFileSize</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">Server</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">ServerActive</span>=<span class="number">10.0</span>.<span class="number">8.10</span></span><br><span class="line"><span class="attr">Hostname</span>=Service</span><br><span class="line"><span class="attr">Include</span>=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line"><span class="attr">Timeout</span>=<span class="number">8</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>2，在/etc/zabbix/zabbix_agentd.d/下定义自定义监控配置文件，例：检测某进程是否挂掉</p>
@@ -175,7 +191,23 @@
     </div>
     <div class="article-info article-info-index">
       
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -226,7 +258,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/14/zabbix自定义监控/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/13/zabbix自定义监控/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -361,6 +393,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
             
             <div class="clearfix"></div>
