@@ -1,4 +1,12 @@
-# zabbix自定义监控
+---
+layout: post
+title: "zabbix自定义监控"
+date: 2018-09-13
+comments: true
+top: true
+tags:
+	- zabbix
+---
 
 ## 一，进程监控
 
