@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
-  <title>Archives: 2018 | Nices blog</title>
+  <title>python爬虫学习零 | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运维">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nices blog">
-<meta property="og:url" content="https://github.com/IceFengQ/archives/2018/index.html">
+  <meta name="description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫学习零">
+<meta property="og:url" content="https://github.com/IceFengQ/2018/09/19/Python爬虫学习零/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="运维">
+<meta property="og:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/assets/blogImg/douban.png">
+<meta property="og:updated_time" content="2018-09-19T06:05:06.265Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nices blog">
-<meta name="twitter:description" content="运维">
+<meta name="twitter:title" content="python爬虫学习零">
+<meta name="twitter:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
+<meta name="twitter:image" content="https://github.com/assets/blogImg/douban.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -131,36 +135,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Python爬虫学习零" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/19/Python爬虫学习零/" class="archive-article-date">
-  	<time datetime="2018-09-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/19/Python爬虫学习零/">python爬虫学习零</a>
+    <h1 class="article-title" itemprop="name">
+      python爬虫学习零
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/19/Python爬虫学习零/" class="archive-article-date">
+  	<time datetime="2018-09-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python爬虫学习零"><a href="#Python爬虫学习零" class="headerlink" title="Python爬虫学习零"></a>Python爬虫学习零</h1><p>参考：(<a href="https://segmentfault.com/a/1190000012681700">https://segmentfault.com/a/1190000012681700</a>) 路远</p>
+<p>参看：(<a href="https://docs.python.org/3.1/search">https://docs.python.org/3.1/search</a>) </p>
+<h2 id="1-什么是爬虫？"><a href="#1-什么是爬虫？" class="headerlink" title="1. 什么是爬虫？"></a><strong>1. 什么是爬虫？</strong></h2><p><em>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</em></p>
+<p>其实，说白了就是爬虫可以模拟浏览器的行为做你想做的事，订制化自己搜索和下载的内容，并实现自动化的操作。比如浏览器可以下载小说，但是有时候并不能批量下载，那么爬虫的功能就有用武之地了。</p>
+<p>其实，说白了就是爬虫可以模拟浏览器的行为做你想做的事，订制化自己搜索和下载的内容，并实现自动化的操作。比如浏览器可以下载小说，但是有时候并不能批量下载，那么爬虫的功能就有用武之地了。</p>
+<a id="more"></a>
+<h2 id="2-爬虫学习路线"><a href="#2-爬虫学习路线" class="headerlink" title="2. 爬虫学习路线"></a><strong>2. 爬虫学习路线</strong></h2><p>在这里只是提供一些思路，只供大家参考。</p>
+<p><strong>学习Python爬虫的大致步骤如下：</strong></p>
+<ul>
+<li>首先学会基本的Python语法知识</li>
+<li>学习Python爬虫常用到的几个重要内置库urllib, http等，用于下载网页</li>
+<li>学习正则表达式re、BeautifulSoup（bs4）、Xpath（lxml）等网页解析工具</li>
+<li>开始一些简单的网站爬取（博主从百度开始的，哈哈），了解爬取数据过程</li>
+<li>了解爬虫的一些反爬机制，header，robot，时间间隔，代理ip，隐含字段等</li>
+<li>学习一些特殊网站的爬取，解决登录、Cookie、动态网页等问题</li>
+<li>了解爬虫与数据库的结合，如何将爬取数据进行储存</li>
+<li>学习应用Python的多线程、多进程进行爬取，提高爬虫效率</li>
+<li>学习爬虫的框架，Scrapy、PySpider等</li>
+<li>学习分布式爬虫（数据量庞大的需求）</li>
+</ul>
+<h3 id="爬虫的过程"><a href="#爬虫的过程" class="headerlink" title="爬虫的过程"></a><strong>爬虫的过程</strong></h3><p>其实，爬虫的过程和浏览器浏览网页的过程是一样的。道理大家应该都明白，就是当我们在键盘上输入网址点击搜索之后，通过网络首先会经过DNS服务器，分析网址的域名，找到了真正的服务器。然后我们通过HTTP协议对服务器发出GET或POST请求，若请求成功，我们就得到了我们想看到的网页，一般都是用HTML, CSS, JS等前端技术来构建的，若请求不成功，服务器会返回给我们请求失败的状态码，常见到的503，403等。</p>
+<h3 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a><strong>urllib库</strong></h3><p>urllib库包含4个重要属性，分别是<strong>error，parse，request，response</strong>。官网解释：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urllib is <span class="selector-tag">a</span> package that collects several modules <span class="keyword">for</span> working with URLs:</span><br><span class="line"></span><br><span class="line">urllib<span class="selector-class">.request</span> <span class="keyword">for</span> opening and reading URLs</span><br><span class="line">urllib<span class="selector-class">.error</span> containing the exceptions raised by urllib.request</span><br><span class="line">urllib<span class="selector-class">.parse</span> <span class="keyword">for</span> parsing URLs</span><br><span class="line">urllib<span class="selector-class">.response</span>	Response classes used by urllib.</span><br></pre></td></tr></table></figure>
+<p>这4个属性中最重要的当属request了，它完成了爬虫大部分的功能，我们先来看看request是怎么用的。</p>
+<h4 id="request的使用"><a href="#request的使用" class="headerlink" title="request的使用"></a><strong>request的使用</strong></h4><p>request请求最简单的操作是用urlopen方法，代码如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">response = urllib<span class="selector-class">.request</span><span class="selector-class">.urlopen</span>(<span class="string">'http://python.org/'</span>)</span><br><span class="line">result = response.read()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(result)</span></span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b'<span class="meta">&lt;!doctype html&gt;</span>\n<span class="comment">&lt;!--[if lt IE 7]&gt;...省略...&lt;/body&gt;\n&lt;/html&gt;\n'</span></span><br></pre></td></tr></table></figure>
+<p>发现得到的运行结果竟然是乱码！！别着急，这是因为编码的问题，我们只需要将请求的类文件读取再解码就可以了。</p>
+<p><strong>修改代码如下：</strong> 添加decode函数，设置utf-8格式</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">response = urllib<span class="selector-class">.request</span><span class="selector-class">.urlopen</span>(<span class="string">'http://python.org/'</span>)</span><br><span class="line">result = response.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(result)</span></span></span><br></pre></td></tr></table></figure>
+<p>运行得到的就是我们想要的html的网页了，怎么样，简单吧。</p>
+<p>下面来介绍一下这个urlopen方法和其中应用的参数。</p>
+<h4 id="urlopen方法-https-docs-python-org-release-3-7-0-library-urllib-request-html-module-urllib-request"><a href="#urlopen方法-https-docs-python-org-release-3-7-0-library-urllib-request-html-module-urllib-request" class="headerlink" title="urlopen方法 https://docs.python.org/release/3.7.0/library/urllib.request.html#module-urllib.request"></a><strong>urlopen方法</strong> <a href="https://docs.python.org/release/3.7.0/library/urllib.request.html#module-urllib.request">https://docs.python.org/release/3.7.0/library/urllib.request.html#module-urllib.request</a></h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def urlopen(url, <span class="attribute">data</span>=None, <span class="attribute">timeout</span>=socket._GLOBAL_DEFAULT_TI</span><br><span class="line">            MEOUT,*, <span class="attribute">cafile</span>=None, <span class="attribute">capath</span>=None, </span><br><span class="line">            <span class="attribute">cadefault</span>=<span class="literal">False</span>, <span class="attribute">context</span>=None):</span><br></pre></td></tr></table></figure>
+<p>urlopen是request的其中一个方法，功能是打开一个URL，URL参数可以是<strong>一串字符串</strong>（如上例子中一样），也可以是<strong>Request对象</strong>（后面会提到）。</p>
+<ul>
+<li><p><strong>url</strong>：即是我们输入的url网址，（如：<a href="http://www.xxxx.com/">http://www.xxxx.com/</a>）；</p>
+</li>
+<li><p><strong>data</strong>：是我们要发给服务器请求的额外信息（比如登录网页需要主动填写的用户信息）。如果需要添加data参数，那么是POST请求，默认无data参数时，就是GET请求；</p>
+<ul>
+<li>一般来讲，data参数只有在http协议下请求才有意义</li>
+<li>data参数被规定为byte object，也就是字节对象</li>
+<li>data参数应该使用标准的结构，这个需要使用urllib.parse.urlencode()将data进行 转换，而一般我们把data设置成字典格式再进行转换即可；data在以后实战中会介绍如何使用</li>
+</ul>
+</li>
+<li><p><strong>timeout</strong>：是选填的内容，定义超时时间，单位是秒，防止请求时间过长，不填就是默认的时间；</p>
+</li>
+<li><p><strong>cafile</strong>：是指向单独文件的，包含了一系列的CA认证 （很少使用，默认即可）;</p>
+</li>
+<li><p><strong>capath</strong>：是指向文档目标，也是用于CA认证（很少使用，默认即可）；</p>
+</li>
+<li><p><strong>cafile</strong>：可以忽略</p>
+</li>
+<li><p><strong>context</strong>：设置SSL加密传输（很少使用，默认即可）；</p>
+</li>
+</ul>
+<p>它会返回一个类文件对象，并可以针对这个对象进行各种操作（如上例中的read操作，将html全部读出来），其它常用方法还有：</p>
+<ul>
+<li><p>geturl()</p>
+<p>: 返回URL，用于看是否有重定向。</p>
+<p>result = response.geturl()</p>
+<p>结果： <code>https://www.python.org/</code></p>
+</li>
+<li><p><strong>info()</strong>：返回元信息，例如HTTP的headers。<br>result = response.info()</p>
+<p>结果：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x-xss-protection: 1; <span class="attribute">mode</span>=block</span><br><span class="line">X-Clacks-Overhead: GNU Terry Pratchett</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line">Vary: Cookie   </span><br><span class="line">Strict-Transport-Security: <span class="attribute">max-age</span>=63072000;includeSubDomains</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getcode()</p>
+<p>：返回回复的HTTP状态码，成功是200，失败可能是503等，可以用来检查代理IP的可使用性。</p>
+<p>result = response.getcode()</p>
+<p>结果：<code>200</code></p>
+</li>
+</ul>
+<h4 id="Request方法"><a href="#Request方法" class="headerlink" title="Request方法"></a><strong>Request方法</strong></h4><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Request:</span><br><span class="line">    def __init__(<span class="keyword">self</span>, url, data=None, headers=<span class="comment">&#123;&#125;</span>,</span><br><span class="line">                 origin_req_host=None, unverifiable=<span class="keyword">False</span>,</span><br><span class="line">                 <span class="function"><span class="keyword">method</span>=<span class="title">None</span>):</span></span><br></pre></td></tr></table></figure>
+<p>如上定义，Request是一个类，初始化中包括请求需要的各种参数：</p>
+<ul>
+<li>url，data和上面urlopen中的提到的一样。</li>
+<li>headers是HTTP请求的报文信息，如User_Agent参数等，它可以让爬虫伪装成浏览器而不被服务器发现你正在使用爬虫。</li>
+<li>origin_reg_host, unverifiable, method等不太常用</li>
+</ul>
+<p><strong>headers</strong>很有用，有些网站设有反爬虫机制，检查请求若没有headers就会报错，因此博主为保证爬虫的稳定性，基本每次都会将headers信息加入进去，这是反爬的简单策略之一。</p>
+<p><strong>那么如何找到你所在浏览器的headers呢？</strong></p>
+<p>可以通过进入浏览器F12查看到<br>比如，博主用的Chrome浏览器，按F12-&gt;network就可以查看request的headers，可以把这个浏览器的headers信息复制下来使用。</p>
+<p><img src="/assets/blogImg/douban.png" alt="douban"></p>
+<p>下面来看看Request如何使用吧，代码如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">headers = &#123;<span class="string">'User_Agent'</span>: <span class="string">''</span>&#125;</span><br><span class="line">response = urllib<span class="selector-class">.request</span><span class="selector-class">.Request</span>(<span class="string">'http://python.org/'</span>, headers=headers)</span><br><span class="line"><span class="selector-tag">html</span> = urllib<span class="selector-class">.request</span><span class="selector-class">.urlopen</span>(response)</span><br><span class="line">result = <span class="selector-tag">html</span>.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(result)</span></span></span><br></pre></td></tr></table></figure>
+<p>结果和前面urlopen是一样的，前面提到urlopen除了可以接受指定参数，也可以接受Request类的对象。’ ‘里面填写自己浏览器的信息即可。</p>
+<p>urllib库的requset属性里面还有很多其它方法，代理、超时、认证、HTTP的POST模式下请求等内容将在下次进行分享，这次主要介绍基本功能。</p>
+<p>下面来说说异常，urllib库的error方法。</p>
+<h4 id="error的使用"><a href="#error的使用" class="headerlink" title="error的使用"></a><strong>error的使用</strong></h4><p>error属性里面主要包括了两个重要的exception类，URLError类和HTTPError类。</p>
+<p><strong>1. URLError类</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, reason, filename=None)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">self</span>.args = reason,</span><br><span class="line">    <span class="keyword">self</span>.reason = reason</span><br><span class="line">    <span class="keyword">if</span> filename is <span class="keyword">not</span> <span class="symbol">None:</span></span><br><span class="line">        <span class="keyword">self</span>.filename = filename</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>URLError类是OSError的子类，继承OSError，没有自己的任何行为特点，但是将作为error里面所有其它类型的基类使用。</p>
+</li>
+<li><p>URLError类初始化定义了reason参数，意味着当使用URLError类的对象时，可以查看错误的reason。</p>
+</li>
+</ul>
+<p><strong>2. HTTPErro类</strong></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">def</span> __init__(<span class="keyword">self, </span>url, <span class="meta">code</span>, msg, hdrs, <span class="built_in">fp</span>):</span><br><span class="line">    <span class="keyword">self.code </span>= <span class="meta">code</span></span><br><span class="line">    <span class="keyword">self.msg </span>= msg</span><br><span class="line">    <span class="keyword">self.hdrs </span>= hdrs</span><br><span class="line">    <span class="keyword">self.fp </span>= <span class="built_in">fp</span></span><br><span class="line">    <span class="keyword">self.filename </span>= url</span><br></pre></td></tr></table></figure>
+<ul>
+<li>HTTPError是URLError的子类，当HTTP发生错误将举出HTTPError。</li>
+<li>HTTPError也是HTTP有效回应的实例，因为HTTP协议错误是有效的回应，包括状态码，headers和body。所以看到在HTTPError初始化的时候定义了这些有效回应的参数。</li>
+<li>当使用HTTPError类的对象时，可以查看状态码，headers等。</li>
+</ul>
+<p>下面我们用一个例子来看一下如何使用这两个exception类。</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.<span class="built_in">error</span></span><br><span class="line"><span class="name">try</span>:</span><br><span class="line">    headers = &#123;<span class="string">'User_Agent'</span>: <span class="string">'Mozilla/5.0 (X11; Ubuntu; </span></span><br><span class="line"><span class="string">                Linux x86_64; rv:57.0) Gecko/20100101 </span></span><br><span class="line"><span class="string">                Firefox/57.0'</span>&#125;</span><br><span class="line">    response = urllib.request.Request(<span class="string">'http://python.org/'</span>, </span><br><span class="line">                                       headers=headers)</span><br><span class="line">    html = urllib.request.urlopen(response)</span><br><span class="line">    result = html.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">except urllib.<span class="built_in">error</span>.URLError as <span class="name">e</span>:</span><br><span class="line">    <span class="keyword">if</span> hasattr(e, <span class="string">'reason'</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'错误原因是'</span> + str(e.reason))</span><br><span class="line">except urllib.<span class="built_in">error</span>.HTTPError as <span class="name">e</span>:</span><br><span class="line">    <span class="keyword">if</span> hasattr(e, <span class="string">'code'</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'错误状态码是'</span> + str(e.code))</span><br><span class="line"><span class="name">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'请求成功通过。'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上代码使用了try..exception的结构，实现了简单的网页爬取，当有异常时，如URLError发生时，就会返回reason，或者HTTPError发生错误时就会返回code。异常的增加丰富了爬取的结构，使其更加健壮。</p>
+<p><strong>为什么说更加健壮了呢？</strong></p>
+<p>不要小看了这些异常的错误，这些异常的错误非常好用，也非常关键。想想看，当你编写一个需要不断自动运行爬取并解析的代码时，你是不希望程序中间被打断而终止的。如果这些异常状态没有设置好，那么就很有可能弹出错误而被终止，但如果设置好了完整的异常，则遇到错误时就会执行发生错误的代码而不被打断（比如向上面代码一样打印错误code等）。</p>
+<p>这些打断程序的错误可能是很多种，尤其当你使用代理ip池的时候，会发生很多不同错误，这时异常就起到作用了。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h2><ul>
+<li>介绍了爬虫的定义和学习路线</li>
+<li>介绍了爬虫的过程</li>
+<li>介绍开始爬虫学习的urllib库的使用，包含以下几个方法：<ul>
+<li>request请求： urlopen, Request</li>
+<li>error异常</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -172,171 +299,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/IceFengQ/2018/09/19/Python爬虫学习零/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/13/zabbix自定义监控/" class="archive-article-date">
-  	<time datetime="2018-09-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/13/zabbix自定义监控/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">zabbix自定义监控</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/13/zabbix自定义监控/">zabbix自定义监控</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/hexo防丢失模式/" class="archive-article-date">
-  	<time datetime="2018-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/hexo防丢失模式/">hexo防丢失模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/06/git 包含git子文件夹怎么push？/" class="archive-article-date">
-  	<time datetime="2018-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/06/git 包含git子文件夹怎么push？/">git 包含git子文件夹怎么push？</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/05/grafana+prometheus/" class="archive-article-date">
-  	<time datetime="2018-09-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/grafana+prometheus/">docker+granafa+promethues</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">prometheus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -359,8 +421,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
