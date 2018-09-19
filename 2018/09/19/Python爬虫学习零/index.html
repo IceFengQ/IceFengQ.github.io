@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
   <title>python爬虫学习零 | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
+  <meta name="description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python爬虫学习零">
 <meta property="og:url" content="https://github.com/IceFengQ/2018/09/19/Python爬虫学习零/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
+<meta property="og:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/assets/blogImg/douban.png">
-<meta property="og:updated_time" content="2018-09-19T06:05:06.265Z">
+<meta property="og:updated_time" content="2018-09-19T06:08:20.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫学习零">
-<meta name="twitter:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远 参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁">
+<meta name="twitter:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、">
 <meta name="twitter:image" content="https://github.com/assets/blogImg/douban.png">
   
   
@@ -155,10 +155,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Python爬虫学习零"><a href="#Python爬虫学习零" class="headerlink" title="Python爬虫学习零"></a>Python爬虫学习零</h1><p>参考：(<a href="https://segmentfault.com/a/1190000012681700">https://segmentfault.com/a/1190000012681700</a>) 路远</p>
-<p>参看：(<a href="https://docs.python.org/3.1/search">https://docs.python.org/3.1/search</a>) </p>
+        <h2 id="Python爬虫学习零"><a href="#Python爬虫学习零" class="headerlink" title="Python爬虫学习零"></a>Python爬虫学习零</h2><p>参考：(<a href="https://segmentfault.com/a/1190000012681700">https://segmentfault.com/a/1190000012681700</a>) 路远<br>参看：(<a href="https://docs.python.org/3.1/search">https://docs.python.org/3.1/search</a>) </p>
 <h2 id="1-什么是爬虫？"><a href="#1-什么是爬虫？" class="headerlink" title="1. 什么是爬虫？"></a><strong>1. 什么是爬虫？</strong></h2><p><em>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</em></p>
-<p>其实，说白了就是爬虫可以模拟浏览器的行为做你想做的事，订制化自己搜索和下载的内容，并实现自动化的操作。比如浏览器可以下载小说，但是有时候并不能批量下载，那么爬虫的功能就有用武之地了。</p>
 <p>其实，说白了就是爬虫可以模拟浏览器的行为做你想做的事，订制化自己搜索和下载的内容，并实现自动化的操作。比如浏览器可以下载小说，但是有时候并不能批量下载，那么爬虫的功能就有用武之地了。</p>
 <a id="more"></a>
 <h2 id="2-爬虫学习路线"><a href="#2-爬虫学习路线" class="headerlink" title="2. 爬虫学习路线"></a><strong>2. 爬虫学习路线</strong></h2><p>在这里只是提供一些思路，只供大家参考。</p>
