@@ -17,7 +17,7 @@
 <meta property="og:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/assets/blogImg/douban.png">
-<meta property="og:updated_time" content="2018-09-19T06:08:20.838Z">
+<meta property="og:updated_time" content="2018-09-19T06:14:38.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫学习零">
 <meta name="twitter:description" content="Python爬虫学习零参考：(https://segmentfault.com/a/1190000012681700) 路远参看：(https://docs.python.org/3.1/search)  1. 什么是爬虫？网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、">
@@ -211,8 +211,7 @@
 </ul>
 <p>它会返回一个类文件对象，并可以针对这个对象进行各种操作（如上例中的read操作，将html全部读出来），其它常用方法还有：</p>
 <ul>
-<li><p>geturl()</p>
-<p>: 返回URL，用于看是否有重定向。</p>
+<li><p>geturl() : 返回URL，用于看是否有重定向。</p>
 <p>result = response.geturl()</p>
 <p>结果： <code>https://www.python.org/</code></p>
 </li>
@@ -220,8 +219,7 @@
 <p>结果：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x-xss-protection: 1; <span class="attribute">mode</span>=block</span><br><span class="line">X-Clacks-Overhead: GNU Terry Pratchett</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line">Vary: Cookie   </span><br><span class="line">Strict-Transport-Security: <span class="attribute">max-age</span>=63072000;includeSubDomains</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>getcode()</p>
-<p>：返回回复的HTTP状态码，成功是200，失败可能是503等，可以用来检查代理IP的可使用性。</p>
+<li><p>getcode()：返回回复的HTTP状态码，成功是200，失败可能是503等，可以用来检查代理IP的可使用性。</p>
 <p>result = response.getcode()</p>
 <p>结果：<code>200</code></p>
 </li>
