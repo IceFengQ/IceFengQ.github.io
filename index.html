@@ -158,30 +158,10 @@
 <p>安装完后，在Terminal里执行以下命令：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Library/</span>Frameworks<span class="regexp">/Mono.framework/</span>Versions<span class="regexp">/&lt;Mono Version&gt;/</span>bin/mozroots --<span class="keyword">import</span> --sync</span><br></pre></td></tr></table></figure>
 <p><Mono Version>需替换为本地版本文件夹名称，此步是为了从Mozilla LXR上下载所有受信任的root证书，存于Mono的证书库里。root证书能用于请求https地址。</p>
-<p>接下来如果想要运行Fiddler，还需要把Mono加入到环境变量中。</p>
-<p>bash环境，编辑.bash_profile文件：<strong>注意末尾版本号</strong></p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
-<p>zsh环境，编辑.zshrc文件：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
-<p>&lt;! –more–&gt;<br>Source配置文件使环境变量生效。</p>
-<h3 id="Fiddler的安装运行"><a href="#Fiddler的安装运行" class="headerlink" title="Fiddler的安装运行"></a>Fiddler的安装运行</h3><p>从Fiddler官网<a href="https://link.jianshu.com/?t=https://www.telerik.com/download/fiddler">https://www.telerik.com/download/fiddler</a>下载<strong>fiddler-mac.zip</strong>的压缩包。解压到非中文字符的路径下。</p>
-<p>打开Terminal，进入到刚才解压的Fiddler路径，执行命令运行：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">mono</span> <span class="selector-tag">Fiddler</span><span class="selector-class">.exe</span></span><br></pre></td></tr></table></figure>
-<p>如果出现如下错误：</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: <span class="keyword">name</span> <span class="string">'lldb'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-<p>怎追加参数</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mono <span class="attribute">--arch</span>=32 Fiddler.exe</span><br></pre></td></tr></table></figure>
-<p><img src="/assets/blogImg/fidder.png" alt="fidder"></p>
-<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><p>现在Fiddler在Mac下还只是Beta1版，所以会有很多问题，比如：</p>
-<ul>
-<li>界面拉伸或缩小，视图不会自动重新渲染</li>
-<li>有些HTTPS站点无法访问</li>
-<li>TLS 1.1和1.2无法支持</li>
-<li>SSL/TLS的握手不正常</li>
-<li>软件无法自动更新</li>
-<li>只有60天的使用期限，到期后需要重新更新</li>
-</ul>
-
+<p>接下来如果想要运行Fiddler，还需要把Mono加入到环境变量中。<br>
+        
+          <a class="article-more-a" href="/2018/09/20/Mac下使用抓包工具Fiddler/#more">more >></a>
+        
       
 
       

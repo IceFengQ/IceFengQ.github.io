@@ -17,7 +17,7 @@
 <meta property="og:description" content="Mac下使用抓包工具Fiddler参考：(https://www.jianshu.com/p/57ec761cb5a3) 环境安装一、Mono安装首先，Mac下需要使用.Net编译后的程序，需要用到跨平台的方案Mono(现阶段微软已推出跨平台的方案.Net Core，不过暂时只支持控制台程序)。安装程序可以从https://www.mono-project.com/download/stable/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/assets/blogImg/fidder.png">
-<meta property="og:updated_time" content="2018-09-20T02:51:28.099Z">
+<meta property="og:updated_time" content="2018-09-20T02:54:41.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下使用抓包工具Fiddler">
 <meta name="twitter:description" content="Mac下使用抓包工具Fiddler参考：(https://www.jianshu.com/p/57ec761cb5a3) 环境安装一、Mono安装首先，Mac下需要使用.Net编译后的程序，需要用到跨平台的方案Mono(现阶段微软已推出跨平台的方案.Net Core，不过暂时只支持控制台程序)。安装程序可以从https://www.mono-project.com/download/stable/">
@@ -160,12 +160,12 @@
 <p>安装完后，在Terminal里执行以下命令：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Library/</span>Frameworks<span class="regexp">/Mono.framework/</span>Versions<span class="regexp">/&lt;Mono Version&gt;/</span>bin/mozroots --<span class="keyword">import</span> --sync</span><br></pre></td></tr></table></figure>
 <p><Mono Version>需替换为本地版本文件夹名称，此步是为了从Mozilla LXR上下载所有受信任的root证书，存于Mono的证书库里。root证书能用于请求https地址。</p>
-<p>接下来如果想要运行Fiddler，还需要把Mono加入到环境变量中。</p>
+<p>接下来如果想要运行Fiddler，还需要把Mono加入到环境变量中。<br><a id="more"></a></p>
 <p>bash环境，编辑.bash_profile文件：<strong>注意末尾版本号</strong></p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
 <p>zsh环境，编辑.zshrc文件：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
-<p>&lt;! –more–&gt;<br>Source配置文件使环境变量生效。</p>
+<p>Source配置文件使环境变量生效。</p>
 <h3 id="Fiddler的安装运行"><a href="#Fiddler的安装运行" class="headerlink" title="Fiddler的安装运行"></a>Fiddler的安装运行</h3><p>从Fiddler官网<a href="https://link.jianshu.com/?t=https://www.telerik.com/download/fiddler">https://www.telerik.com/download/fiddler</a>下载<strong>fiddler-mac.zip</strong>的压缩包。解压到非中文字符的路径下。</p>
 <p>打开Terminal，进入到刚才解压的Fiddler路径，执行命令运行：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">mono</span> <span class="selector-tag">Fiddler</span><span class="selector-class">.exe</span></span><br></pre></td></tr></table></figure>
