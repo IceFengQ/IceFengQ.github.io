@@ -133,6 +133,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mac下使用抓包工具Fiddler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/Mac下使用抓包工具Fiddler/">Mac下使用抓包工具Fiddler</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/Mac下使用抓包工具Fiddler/" class="archive-article-date">
+  	<time datetime="2018-09-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mac下使用抓包工具Fiddler"><a href="#Mac下使用抓包工具Fiddler" class="headerlink" title="Mac下使用抓包工具Fiddler"></a>Mac下使用抓包工具Fiddler</h1><p>参考：(<a href="https://www.jianshu.com/p/57ec761cb5a3">https://www.jianshu.com/p/57ec761cb5a3</a>)</p>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="一、Mono安装"><a href="#一、Mono安装" class="headerlink" title="一、Mono安装"></a>一、Mono安装</h3><p>首先，Mac下需要使用.Net编译后的程序，需要用到跨平台的方案Mono(现阶段微软已推出跨平台的方案.Net Core，不过暂时只支持控制台程序)。安装程序可以从<a href="https://www.mono-project.com/download/stable/#download-mac">https://www.mono-project.com/download/stable/#download-mac</a>下载</p>
+<p>安装完后，在Terminal里执行以下命令：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Library/</span>Frameworks<span class="regexp">/Mono.framework/</span>Versions<span class="regexp">/&lt;Mono Version&gt;/</span>bin/mozroots --<span class="keyword">import</span> --sync</span><br></pre></td></tr></table></figure>
+<p><Mono Version>需替换为本地版本文件夹名称，此步是为了从Mozilla LXR上下载所有受信任的root证书，存于Mono的证书库里。root证书能用于请求https地址。</p>
+<p>接下来如果想要运行Fiddler，还需要把Mono加入到环境变量中。</p>
+<p>bash环境，编辑.bash_profile文件：<strong>注意末尾版本号</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>zsh环境，编辑.zshrc文件：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">MONO_HOME</span>=/Library/Frameworks/Mono.framework/Versions/&lt;Mono Version&gt;</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$MONO_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>&lt;! –more–&gt;<br>Source配置文件使环境变量生效。</p>
+<h3 id="Fiddler的安装运行"><a href="#Fiddler的安装运行" class="headerlink" title="Fiddler的安装运行"></a>Fiddler的安装运行</h3><p>从Fiddler官网<a href="https://link.jianshu.com/?t=https://www.telerik.com/download/fiddler">https://www.telerik.com/download/fiddler</a>下载<strong>fiddler-mac.zip</strong>的压缩包。解压到非中文字符的路径下。</p>
+<p>打开Terminal，进入到刚才解压的Fiddler路径，执行命令运行：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">mono</span> <span class="selector-tag">Fiddler</span><span class="selector-class">.exe</span></span><br></pre></td></tr></table></figure>
+<p>如果出现如下错误：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: <span class="keyword">name</span> <span class="string">'lldb'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+<p>怎追加参数</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mono <span class="attribute">--arch</span>=32 Fiddler.exe</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/blogImg/fidder.png" alt="fidder"></p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><p>现在Fiddler在Mac下还只是Beta1版，所以会有很多问题，比如：</p>
+<ul>
+<li>界面拉伸或缩小，视图不会自动重新渲染</li>
+<li>有些HTTPS站点无法访问</li>
+<li>TLS 1.1和1.2无法支持</li>
+<li>SSL/TLS的握手不正常</li>
+<li>软件无法自动更新</li>
+<li>只有60天的使用期限，到期后需要重新更新</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MAC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/Mac下使用抓包工具Fiddler/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python爬虫学习零" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -653,6 +759,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MAC</a>
               </li>
             
             <div class="clearfix"></div>
