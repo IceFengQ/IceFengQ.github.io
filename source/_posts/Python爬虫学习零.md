@@ -8,8 +8,6 @@ tags:
 	- python
 ---
 
-## Python爬虫学习零
-
 参考：(https://segmentfault.com/a/1190000012681700) 路远
 参看：(https://docs.python.org/3.1/search) 
 
@@ -89,7 +87,7 @@ print(result)
 
 下面来介绍一下这个urlopen方法和其中应用的参数。
 
-#### **urlopen方法** https://docs.python.org/release/3.7.0/library/urllib.request.html#module-urllib.request
+#### **urlopen方法** <https://docs.python.org/release/3.7.0/library/urllib.request.html#module-urllib.request>
 
 ```
 def urlopen(url, data=None, timeout=socket._GLOBAL_DEFAULT_TI
