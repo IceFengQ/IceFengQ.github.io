@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
   <title>CAP定理、BASE理论 | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CAP定理、BASE理论引自(https://www.cnblogs.com/duanxz/p/5229352.html) 引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容">
+  <meta name="description" content="引自(https://www.cnblogs.com/duanxz/p/5229352.html)引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可得兼。CA">
 <meta name="keywords" content="分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CAP定理、BASE理论">
 <meta property="og:url" content="https://github.com/IceFengQ/2018/09/29/cap定理与base理论/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="CAP定理、BASE理论引自(https://www.cnblogs.com/duanxz/p/5229352.html) 引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容">
+<meta property="og:description" content="引自(https://www.cnblogs.com/duanxz/p/5229352.html)引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可得兼。CA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T04:14:07.902Z">
+<meta property="og:updated_time" content="2018-09-29T04:17:54.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CAP定理、BASE理论">
-<meta name="twitter:description" content="CAP定理、BASE理论引自(https://www.cnblogs.com/duanxz/p/5229352.html) 引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容">
+<meta name="twitter:description" content="引自(https://www.cnblogs.com/duanxz/p/5229352.html)引自(http://www.ruanyifeng.com/blog/2018/07/cap.html) CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可得兼。CA">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,8 +153,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="CAP定理、BASE理论"><a href="#CAP定理、BASE理论" class="headerlink" title="CAP定理、BASE理论"></a>CAP定理、BASE理论</h2><p>引自(<a href="https://www.cnblogs.com/duanxz/p/5229352.html">https://www.cnblogs.com/duanxz/p/5229352.html</a>)</p>
-<p>引自(<a href="http://www.ruanyifeng.com/blog/2018/07/cap.html">http://www.ruanyifeng.com/blog/2018/07/cap.html</a>)</p>
+        <p>引自(<a href="https://www.cnblogs.com/duanxz/p/5229352.html">https://www.cnblogs.com/duanxz/p/5229352.html</a>)<br>引自(<a href="http://www.ruanyifeng.com/blog/2018/07/cap.html">http://www.ruanyifeng.com/blog/2018/07/cap.html</a>)</p>
 <p>CAP原则又称CAP定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可得兼。CAP原则是NOSQL数据库的基石。Consistency（一致性）。 Availability（可用性）。Partition tolerance（分区容错性）。</p>
 <p><strong>在分布式系统的设计中，没有一种设计可以同时满足一致性，可用性，分区容错性 3个特性</strong></p>
 <p>分布式系统的CAP理论：理论首先把分布式系统中的三个特性进行了如下归纳：</p>
@@ -193,7 +192,7 @@
 <p>​         单调写一致性是指，一个系统需要能够保证来自同一个进程的写操作被顺序地执行。</p>
 <p>以上就是最终一致性的五类常见的变种，在时间系统实践中，可以将其中的若干个变种互相结合起来，以构建一个具有最终一致性的分布式系统。事实上，可以将其中的若干个变种相互结合起来，以构建一个具有最终一致性特性的分布式系统。事实上，最终一致性并不是只有那些大型分布式系统才设计的特性，许多现代的关系型数据库都采用了最终一致性模型。在现代关系型数据库中，大多都会采用同步和异步方式来实现主备数据复制技术。在同步方式中，数据的复制过程通常是更新事务的一部分，因此在事务完成后，主备数据库的数据就会达到一致。而在异步方式中，备库的更新往往存在延时，这取决于事务日志在主备数据库之间传输的时间长短，如果传输时间过长或者甚至在日志传输过程中出现异常导致无法及时将事务应用到备库上，那么狠显然，从备库中读取的的数据将是旧的，因此就出现了不一致的情况。当然，无论是采用多次重试还是人为数据订正，关系型数据库还是能够保证最终数据达到一致——这就是系统提供最终一致性保证的经典案例。</p>
 <p>总的来说，BASE理论面向的是大型高可用可扩展的分布式系统，和传统事务的ACID特性是相反的，它完全不同于ACID的强一致性模型，而是提出通过牺牲强一致性来获得可用性，并允许数据在一段时间内是不一致的，但最终达到一致状态。但同时，在实际的分布式场景中，不同业务单元和组件对数据一致性的要求是不同的，因此在具体的分布式系统架构设计过程中，ACID特性与BASE理论往往又会结合在一起使用。</p>
-<h2 id="与NoSQL的关系编辑"><a href="#与NoSQL的关系编辑" class="headerlink" title="与NoSQL的关系编辑"></a>与NoSQL的关系编辑</h2><p>传统的关系型数据库在功能支持上通常很宽泛，从简单的键值查询，到复杂的多表联合查询再到事务机制的支持。而与之不同的是，NoSQL系统通常注重性能和扩展性，而非事务机制（事务就是强一致性的体现） 。<br>　　传统的SQL数据库的事务通常都是支持ACID的强事务机制。A代表原子性，即在事务中执行多个操作是原子性的，要么事务中的操作全部执行，要么一个都不执行;C代表一致性，即保证进行事务的过程中整个数据加的状态是一致的，不会出现数据花掉的情况;I代表隔离性，即两个事务不会相互影响，覆盖彼此数据等;D表示持久化，即事务一量完成，那么数据应该是被写到安全的，持久化存储的设备上（比如磁盘）。<br>　　NoSQL系统仅提供对行级别的原子性保证，也就是说同时对同一个Key下的数据进行的两个操作，在实际执行的时候是会串行的执行，保证了每一个Key-Value对不会被破坏。</p>
+<h3 id="与NoSQL的关系编辑"><a href="#与NoSQL的关系编辑" class="headerlink" title="与NoSQL的关系编辑"></a>与NoSQL的关系编辑</h3><p>传统的关系型数据库在功能支持上通常很宽泛，从简单的键值查询，到复杂的多表联合查询再到事务机制的支持。而与之不同的是，NoSQL系统通常注重性能和扩展性，而非事务机制（事务就是强一致性的体现） 。<br>　　传统的SQL数据库的事务通常都是支持ACID的强事务机制。A代表原子性，即在事务中执行多个操作是原子性的，要么事务中的操作全部执行，要么一个都不执行;C代表一致性，即保证进行事务的过程中整个数据加的状态是一致的，不会出现数据花掉的情况;I代表隔离性，即两个事务不会相互影响，覆盖彼此数据等;D表示持久化，即事务一量完成，那么数据应该是被写到安全的，持久化存储的设备上（比如磁盘）。<br>　　NoSQL系统仅提供对行级别的原子性保证，也就是说同时对同一个Key下的数据进行的两个操作，在实际执行的时候是会串行的执行，保证了每一个Key-Value对不会被破坏。</p>
 <p>注意：不要将弱一致性，最终一致性放到CAP理论里混为一谈（混淆概念的坑真多）<br>弱一致性，最终一致性 你可以认为和CAP的C一点关系也没有，因为CAP的C是更新操作完成后，任何节点看到的数据完全一致, 弱一致性。最终一致性本身和CAP的C一致性是违背的，所以你可以看到那些谎称自己系统同时具备CAP 3个特性是多么的可笑，可能国内更多的场景是：<strong>一个开放人员一旦走上讲台演讲，就立马转变为了营销人员，连最基本的理念也不要了</strong>。</p>
 <h3 id="为什么会是这样"><a href="#为什么会是这样" class="headerlink" title="为什么会是这样"></a>为什么会是这样</h3><p>我们来看一个简单的问题, 一个DB服务   搭建在两个机房（北京,广州)，两个DB实例同时提供写入和读取</p>
 <ol>
@@ -205,10 +204,11 @@
 <ol start="3">
 <li><strong>假设DB的更新操作是同时写北京和广州的DB都成功才返回成功且网络故障时提供降级服务</strong><br> 降级服务，如停止写入，只提供读取功能，这样能保证数据是一致的，且网络故障时能提供服务，满足CP原则，但是它无法满足可用性原则</li>
 </ol>
-<h2 id="Consistency-和-Availability-的矛盾"><a href="#Consistency-和-Availability-的矛盾" class="headerlink" title="Consistency 和 Availability 的矛盾"></a>Consistency 和 Availability 的矛盾</h2><h1 id="选择权衡"><a href="#选择权衡" class="headerlink" title="选择权衡"></a>选择权衡</h1><p>通过上面的例子，我们得知，我们永远无法同时得到CAP这3个特性，那么我们怎么来权衡选择呢？<br><strong>选择的关键点取决于业务场景</strong></p>
+<h3 id="在什么场合，可用性高于一致性？"><a href="#在什么场合，可用性高于一致性？" class="headerlink" title="在什么场合，可用性高于一致性？"></a>在什么场合，可用性高于一致性？</h3><p>举例来说，发布一张网页到 CDN，多个服务器有这张网页的副本。后来发现一个错误，需要更新网页，这时只能每个服务器都更新一遍。一般来说，网页的更新不是特别强调一致性。短时期内，一些用户拿到老版本，另一些用户拿到新版本，问题不会特别大。当然，所有人最终都会看到新版本。所以，这个场合就是可用性高于一致性。</p>
+<h3 id="选择权衡"><a href="#选择权衡" class="headerlink" title="选择权衡"></a>选择权衡</h3><p>通过上面的例子，我们得知，我们永远无法同时得到CAP这3个特性，那么我们怎么来权衡选择呢？<br><strong>选择的关键点取决于业务场景</strong></p>
 <p>对于大多数互联网应用来说（如网易门户），因为机器数量庞大，部署节点分散，网络故障是常态，可用性是必须需要保证的，所以只有设置一致性来保证服务的AP，通常常见的高可用服务吹嘘5个9 6个9服务SLA稳定性就本都是放弃C选择AP</p>
 <p>对于需要确保强一致性的场景，如银行，通常会权衡CA和CP模型，CA模型网络故障时完全不可用，CP模型具备部分可用性，实际的选择需要通过业务场景来权衡（并不是所有情况CP都好于CA，只能查看信息不能更新信息有时候从产品层面还不如直接拒绝服务）</p>
-<h1 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h1><p>BASE(Basically Available, Soft State, Eventual Consistency  基本可用、软状态、最终一致性) 对CAP AP理论的延伸, Redis等众多系统构建于这个理论之上<br>ACID 是传统数据库常用的设计理念, ACID和BASE代表了两种截然相反的设计哲学，分处一致性-可用性分布图谱的两极。</p>
+<h3 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h3><p>BASE(Basically Available, Soft State, Eventual Consistency  基本可用、软状态、最终一致性) 对CAP AP理论的延伸, Redis等众多系统构建于这个理论之上<br>ACID 是传统数据库常用的设计理念, ACID和BASE代表了两种截然相反的设计哲学，分处一致性-可用性分布图谱的两极。</p>
 
       
 
