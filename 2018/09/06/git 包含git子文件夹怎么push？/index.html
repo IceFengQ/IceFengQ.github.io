@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/IceFengQ">
   <title>git 包含git子文件夹怎么push？ | Nices blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git 包含git子文件夹怎么push？情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓">
+  <meta name="description" content="情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓存然后再添加才行。 1git rm -r">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 包含git子文件夹怎么push？">
 <meta property="og:url" content="https://github.com/IceFengQ/2018/09/06/git 包含git子文件夹怎么push？/index.html">
 <meta property="og:site_name" content="Nices blog">
-<meta property="og:description" content="git 包含git子文件夹怎么push？情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓">
+<meta property="og:description" content="情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓存然后再添加才行。 1git rm -r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-06T08:43:31.670Z">
+<meta property="og:updated_time" content="2018-09-29T04:20:43.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 包含git子文件夹怎么push？">
-<meta name="twitter:description" content="git 包含git子文件夹怎么push？情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓">
+<meta name="twitter:description" content="情况如下： 当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。例如： 12git status #查看需要项目git add &amp;lt;子项目&amp;gt; 如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，需要先清空该文件夹的本地缓存然后再添加才行。 1git rm -r">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,11 +153,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-包含git子文件夹怎么push？"><a href="#git-包含git子文件夹怎么push？" class="headerlink" title="git 包含git子文件夹怎么push？"></a>git 包含git子文件夹怎么push？</h3><p>情况如下：</p>
+        <p>情况如下：</p>
 <p>当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。<br>例如：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment">#查看需要项目</span></span><br><span class="line">git <span class="keyword">add</span><span class="bash"> &lt;子项目&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，<br>需要先清空该文件夹的本地缓存然后再添加才行。</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r <span class="comment">--cached path</span></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -391,6 +392,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
               </li>
             
             <div class="clearfix"></div>

@@ -223,6 +223,96 @@
 
 
   
+    <article id="post-互联网协议入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/28/互联网协议入门（一）/">互联网协议入门</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/28/互联网协议入门（一）/" class="archive-article-date">
+  	<time datetime="2018-09-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(<a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html">http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html</a>) 阮一峰网络日志</p>
+<p>五层简易理解互联网协议</p>
+<p>协议：每一层都是为了完成一种功能。为了实现这些功能，就需要大家都遵守共同的规则。大家都遵守的规则，就叫做”协议”（protocol）。</p>
+<p>互联网的每一层，都定义了很多协议。这些协议的总称，就叫做”互联网协议”（Internet Protocol Suite）。它们是互联网的核心，下面介绍每一层的功能，主要就是介绍每一层的主要协议。</p>
+<p><img src="/assets/blogImg/fivefl.png" alt="五层协议"></p>
+<p>一，<strong>实体层，它就是把电脑连接起来的物理手段。它主要规定了网络的一些电气特性，作用是负责传送0和1的电信号。</strong></p>
+<p>二，<strong>链接层</strong></p>
+<p>1，<strong>定义</strong></p>
+<p>单纯的0和1没有任何意义，必须规定解读方式：多少个电信号算一组？每个信号位有何意义？</p>
+<p><strong>这就是”链接层”的功能，它在”实体层”的上方，确定了0和1的分组方式。</strong><br>
+        
+          <a class="article-more-a" href="/2018/09/28/互联网协议入门（一）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络协议</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/28/互联网协议入门（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mac下使用抓包工具Fiddler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -587,11 +677,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-包含git子文件夹怎么push？"><a href="#git-包含git子文件夹怎么push？" class="headerlink" title="git 包含git子文件夹怎么push？"></a>git 包含git子文件夹怎么push？</h3><p>情况如下：</p>
+        <p>情况如下：</p>
 <p>当原有git仓库中因需求克隆其他项目时，这时git仓库中就包含了子项目，此时像远程仓库提交需要单独指明git子仓库，然后使用git status查看是否提交。<br>例如：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment">#查看需要项目</span></span><br><span class="line">git <span class="keyword">add</span><span class="bash"> &lt;子项目&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果此时子项目已经无法add，那么原有可能是该文件夹已经被纳入了版本管理中，<br>需要先清空该文件夹的本地缓存然后再添加才行。</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r <span class="comment">--cached path</span></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -837,6 +928,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
               </li>
             
             <div class="clearfix"></div>
