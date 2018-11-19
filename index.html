@@ -133,6 +133,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitmq集群组建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/19/rabbitmq集群组建/">rabbitmq集群组建</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/19/rabbitmq集群组建/" class="archive-article-date">
+  	<time datetime="2018-11-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考：(<a href="https://segmentfault.com/a/1190000010702020">https://segmentfault.com/a/1190000010702020</a>)</p>
+<p><strong>要求与考虑</strong></p>
+<p>主要是高可用方案</p>
+<p>实际使用rabbitmq是需要做数据持久化的，持久化到本地磁盘，大小可扩展</p>
+<p>数据无论如何不能丢，还要提前做好扩容方案，节点扩展是否用弹性扩容</p>
+<p><strong>前提准备</strong>：</p>
+<p>三台局域网阿里云ecs实例,slb代理转发</p>
+<p><strong>环境</strong>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CentOS</span> <span class="selector-tag">Linux</span> <span class="selector-tag">release</span> 7<span class="selector-class">.5</span><span class="selector-class">.1804</span></span><br><span class="line"><span class="selector-tag">Rabbitmq</span> 3<span class="selector-class">.7</span><span class="selector-class">.7</span>    </span><br><span class="line"><span class="selector-tag">erlang-21</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/11/19/rabbitmq集群组建/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/19/rabbitmq集群组建/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cap定理与base理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -370,95 +459,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/20/Mac下使用抓包工具Fiddler/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rabbitmq集群组建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/rabbitmq集群组建/">rabbitmq集群组建</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/rabbitmq集群组建/" class="archive-article-date">
-  	<time datetime="2018-09-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考：(<a href="https://segmentfault.com/a/1190000010702020">https://segmentfault.com/a/1190000010702020</a>)</p>
-<p><strong>要求与考虑</strong></p>
-<p>主要是高可用方案</p>
-<p>实际使用rabbitmq是需要做数据持久化的，持久化到本地磁盘，大小可扩展</p>
-<p>数据无论如何不能丢，还要提前做好扩容方案，节点扩展是否用弹性扩容</p>
-<p><strong>前提准备</strong>：</p>
-<p>三台局域网阿里云ecs实例,slb代理转发</p>
-<p><strong>环境</strong>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CentOS</span> <span class="selector-tag">Linux</span> <span class="selector-tag">release</span> 7<span class="selector-class">.5</span><span class="selector-class">.1804</span></span><br><span class="line"><span class="selector-tag">Rabbitmq</span> 3<span class="selector-class">.7</span><span class="selector-class">.7</span>    </span><br><span class="line"><span class="selector-tag">erlang-21</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/20/rabbitmq集群组建/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/rabbitmq集群组建/">展开全文 >></a>
         </p>
       
 
