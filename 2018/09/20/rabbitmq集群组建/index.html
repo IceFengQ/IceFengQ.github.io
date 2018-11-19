@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Nices blog">
 <meta property="og:description" content="参考：(https://segmentfault.com/a/1190000010702020) 要求与考虑 主要是高可用方案 实际使用rabbitmq是需要做数据持久化的，持久化到本地磁盘，大小可扩展 数据无论如何不能丢，还要提前做好扩容方案，节点扩展是否用弹性扩容 前提准备： 三台局域网阿里云ecs实例,slb代理转发 环境： 123CentOS Linux release 7.5.1804R">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-19T04:23:10.337Z">
+<meta property="og:updated_time" content="2018-11-19T04:37:04.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq集群组建">
 <meta name="twitter:description" content="参考：(https://segmentfault.com/a/1190000010702020) 要求与考虑 主要是高可用方案 实际使用rabbitmq是需要做数据持久化的，持久化到本地磁盘，大小可扩展 数据无论如何不能丢，还要提前做好扩容方案，节点扩展是否用弹性扩容 前提准备： 三台局域网阿里云ecs实例,slb代理转发 环境： 123CentOS Linux release 7.5.1804R">
@@ -162,7 +162,8 @@
 <p>三台局域网阿里云ecs实例,slb代理转发</p>
 <p><strong>环境</strong>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CentOS</span> <span class="selector-tag">Linux</span> <span class="selector-tag">release</span> 7<span class="selector-class">.5</span><span class="selector-class">.1804</span></span><br><span class="line"><span class="selector-tag">Rabbitmq</span> 3<span class="selector-class">.7</span><span class="selector-class">.7</span>    </span><br><span class="line"><span class="selector-tag">erlang-21</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure>
-<p>&lt;! –more–&gt;<br>一，单机准备</p>
+<a id="more"></a>
+<p>一，单机准备</p>
 <p>程序安装过程：</p>
 <p>1,修改hosts并关闭防火墙</p>
 <figure class="highlight plain"><figcaption><span>stop firewalld.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>

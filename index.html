@@ -428,78 +428,9 @@
 <p>三台局域网阿里云ecs实例,slb代理转发</p>
 <p><strong>环境</strong>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CentOS</span> <span class="selector-tag">Linux</span> <span class="selector-tag">release</span> 7<span class="selector-class">.5</span><span class="selector-class">.1804</span></span><br><span class="line"><span class="selector-tag">Rabbitmq</span> 3<span class="selector-class">.7</span><span class="selector-class">.7</span>    </span><br><span class="line"><span class="selector-tag">erlang-21</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure>
-<p>&lt;! –more–&gt;<br>一，单机准备</p>
-<p>程序安装过程：</p>
-<p>1,修改hosts并关闭防火墙</p>
-<figure class="highlight plain"><figcaption><span>stop firewalld.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-<p>2,添加repo并安装依赖erlang</p>
-<p>To use Erlang 21.x on CentOS 7:</p>
-<p># In /etc/yum.repos.d/rabbitmq-erlang.repo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[rabbitmq-erlang]</span><br><span class="line">name=rabbitmq-erlang</span><br><span class="line">baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/21/el/7</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">yum install erlang -y    </span><br><span class="line">#卸载旧版及依赖  rpm -qa|grep erlang|xargs rpm -e</span><br></pre></td></tr></table></figure>
-<p>3,安装rabbItmq-server</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget &lt;https:<span class="regexp">//gi</span>thub.com<span class="regexp">/rabbitmq/</span>rabbitmq-server<span class="regexp">/releases/</span>download<span class="regexp">/v3.7.7/</span>rabbitmq-server-<span class="number">3.7</span>.<span class="number">7</span>-<span class="number">1</span>.el6.noarch.rpm&gt;</span><br><span class="line"></span><br><span class="line">sudo yum install socat   <span class="comment">#安装依赖</span></span><br><span class="line"></span><br><span class="line">sudo rpm -ivh rabbitmq-server-<span class="number">3.7</span>.<span class="number">7</span>-<span class="number">1</span>.el6.noarch.rpm     <span class="comment">#安装版本3.7.7</span></span><br></pre></td></tr></table></figure>
-<p>后台启动</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-<span class="keyword">server</span> -detached</span><br></pre></td></tr></table></figure>
-<p>查看log </p>
-<p>less  <a href="mailto:/var/log/rabbitmq/rabbit@node1.log">/var/log/rabbitmq/rabbit@node1.log</a></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">node           :</span> rabbit<span class="meta">@node</span>1</span><br><span class="line">home <span class="string">dir       :</span> <span class="regexp">/var/</span>lib/rabbitmq</span><br><span class="line">config file(s) : (none)</span><br><span class="line">cookie <span class="string">hash    :</span> <span class="number">1</span>nnqoRN63vVb/pyFCOhLOw==</span><br><span class="line">log(s)         : <span class="regexp">/var/</span>log<span class="regexp">/rabbitmq/</span>rabbit<span class="meta">@test</span><span class="number">-203.</span>log</span><br><span class="line">               : <span class="regexp">/var/</span>log<span class="regexp">/rabbitmq/</span>rabbit<span class="meta">@test</span><span class="number">-203</span>_upgrade.log</span><br><span class="line">database <span class="string">dir   :</span> <span class="regexp">/var/</span>lib<span class="regexp">/rabbitmq/</span>mnesia/rabbit<span class="meta">@test</span><span class="number">-203</span></span><br></pre></td></tr></table></figure>
-<p>查看rabbitmq状态 </p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rabbitmqctl status</span></span><br></pre></td></tr></table></figure>
-<p>停止服务</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status rabbitmq-<span class="keyword">server</span>.service</span><br></pre></td></tr></table></figure>
-<p>二，集群环境组建</p>
-<p>通过 Erlang 的分布式特性（通过 magic cookie 认证节点）进行 RabbitMQ 集群，各 RabbitMQ 服务为对等节点，即每个节点都提供服务给客户端连接，进行消息发送与接收。</p>
-<p>这些节点通过 RabbitMQ HA 队列（镜像队列）进行消息队列结构复制。本方案中搭建 3 个节点，并且都是磁盘节点（所有节点状态保持一致，节点完全对等），只要有任何一个节点能够工作，RabbitMQ 集群对外就能提供服务。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp  /var/<span class="class"><span class="keyword">lib</span>/<span class="title">rabbitmq</span>/.<span class="title">erlang</span>.<span class="title">cookie</span>  <span class="title">node</span>:/<span class="title">var</span>/<span class="title">lib</span>/<span class="title">rabbitmq</span>/  <span class="comment"># 到两台集群机，注意权限问题</span></span></span><br></pre></td></tr></table></figure>
-<p><strong><em>注意事项</em></strong> </p>
-<p>cookie在所有节点上必须完全一样，同步时一定要注意。<br>erlang是通过主机名来连接服务，必须保证各个主机名之间可以ping通。可以通过编辑/etc/hosts来手工添加主机名和IP对应关系。如果主机名ping不通，rabbitmq服务启动会失败。</p>
-<p>运行各节点</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rabbitmqctl stop</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rabbitmq-server -detached</span></span><br></pre></td></tr></table></figure>
-<p>分节点加入集群命令（此处node1为主节点）</p>
-<p>node2</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node2 <span class="variable">$ </span>rabbitmqctl stop_app            <span class="comment"># 停止rabbitmq服务</span></span><br><span class="line"></span><br><span class="line">node2 <span class="variable">$ </span>rabbitmqctl join_cluster rabbit<span class="variable">@node1</span>    <span class="comment"># node2和node1构成集群, node2必须能通过node1的主机名ping通</span></span><br><span class="line"></span><br><span class="line">node2 <span class="variable">$ </span>rabbitmqctl start_app            <span class="comment"># 开启rabbitmq服务</span></span><br></pre></td></tr></table></figure>
-<p>node3</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node3 <span class="variable">$ </span>rabbitmqctl stop_app            <span class="comment"># 停止rabbitmq服务</span></span><br><span class="line"></span><br><span class="line">node3 <span class="variable">$ </span>rabbitmqctl join_cluster --ram rabbit<span class="variable">@node1</span>    <span class="comment"># node3和node1构成集群, node2必须能通过node1的主机名ping通</span></span><br><span class="line"></span><br><span class="line">node3 <span class="variable">$ </span>rabbitmqctl start_app            <span class="comment"># 开启rabbitmq服务</span></span><br></pre></td></tr></table></figure>
-<p>设置节点状态</p>
-<p>其中<code>–ram</code>指的是作为内存节点,要是想做为磁盘节点的话,就不用加<code>–ram</code>这个参数了</p>
-<p><strong>加入内存节点集群</strong>,默认是磁盘节点</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node2 <span class="comment"># rabbitmqctl join_cluster --ram rabbit<span class="doctag">@node</span>1</span></span><br></pre></td></tr></table></figure>
-<p><strong>在RabbitMQ集群里，必须至少有一个磁盘节点存在</strong></p>
-<p>更改节点属性</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node2 $ rabbitmqctl stop_app  <span class="comment"># 停止rabbitmq服务</span></span><br><span class="line"></span><br><span class="line">node2 $ rabbitmqctl change_cluster_node_type ram <span class="comment"># 更改节点为内存节点</span></span><br><span class="line">Turning rabbit@node2 into a ram <span class="keyword">node</span><span class="title"></span></span><br><span class="line"><span class="title"></span></span><br><span class="line"><span class="title">node2</span> $ rabbitmqctl change_cluster_node_type disc <span class="comment"># 更改节点为磁盘节点</span></span><br><span class="line">Turning rabbit@node2 into a disc <span class="keyword">node</span><span class="title"></span></span><br><span class="line"><span class="title"></span></span><br><span class="line"><span class="title">node2</span> $ rabbitmqctl start_app <span class="comment"># 开启rabbitmq服务</span></span><br></pre></td></tr></table></figure>
-<p><strong>查看集群状态</strong></p>
-<p>执行完之后分别在每台机器上查看节点状态</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rabbitmqctl cluster_status</span></span><br><span class="line">Cluster status <span class="keyword">of</span> node rabbit@node1</span><br><span class="line">[&#123;nodes,[&#123;disc,[rabbit@node1,rabbit@node2,rabbit@node3]&#125;]&#125;,</span><br><span class="line"> &#123;alarms,[&#123;rabbit@node2,[]&#125;,&#123;rabbit@node3,[]&#125;]&#125;]</span><br></pre></td></tr></table></figure>
-<p>第一行是集群中的节点成员，disc表示这些都是磁盘节点</p>
-<p>第二行是正在运行的节点成员</p>
-<p><strong>设置镜像队列高可用模式</strong></p>
-<p>镜像队列概念：</p>
-<p>镜像队列可以同步queue和message，当主queue挂掉，从queue中会有一个变为主queue来接替工作。</p>
-<p>镜像队列是基于普通的集群模式的,所以你还是得先配置普通集群,然后才能设置镜像队列。</p>
-<p>镜像队列设置后，会分一个主节点和多个从节点，如果主节点宕机，从节点会有一个选为主节点，原先的主节点起来后会变为从节点。</p>
-<p>queue和message虽然会存在所有镜像队列中，但客户端读取时不论物理面连接的主节点还是从节点，都是从主节点读取数据，然后主节点再将queue和message的状态同步给从节点，因此多个客户端连接不同的镜像队列不会产生同一message被多次接受的情况。</p>
-<p><strong>在任意节点执行</strong></p>
-<figure class="highlight plain"><figcaption><span>set_policy ha-all '^' '&#123;"ha-mode":"all"&#125;'</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_policy ha-all &apos;^&apos; &apos;&#123;&quot;ha-mode&quot;:&quot;all&quot;&#125;&apos;</span><br></pre></td></tr></table></figure>
-<p><strong>web界面管理</strong></p>
-<p>启动web管理插件，端口15672</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="builtin-name">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
-<p><strong>集群重启</strong><br>集群重启时，最后一个挂掉的节点应该第一个重启，如果因特殊原因（比如同时断电），而不知道哪个节点最后一个挂掉。可用以下方法重启：<br>先在一个节点上执行,然后在其他节点直接start，查看状态<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rabbitmqctl force_boot</span><br><span class="line">$<span class="built_in"> service </span>rabbitmq-server start</span><br></pre></td></tr></table></figure></p>
-<p><strong>用户与安全</strong></p>
-<p>处于安全的考虑，guest这个默认的用户只能通过<code>http://localhost:15672</code> 来登录，其他的IP无法直接使用这个账号。 这对于服务器上没有安装桌面的情况是无法管理维护的，除非通过在前面添加一层代理向外提供服务，这个又有些麻烦了，这里通过配置文件来实现这个功能</p>
-<p> 初始<strong>添加用户</strong>并授予权限</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_user root 123456</span><br><span class="line"></span><br><span class="line">rabbitmqctl <span class="keyword">set</span>_permissions -p / root <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span> </span><br><span class="line"></span><br><span class="line">rabbitmqctl <span class="keyword">set</span>_user_tags root administrator</span><br></pre></td></tr></table></figure>
-<p>删除用户</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rabbitmqctl  delete_user ***</span><br><span class="line">Deleting<span class="built_in"> user </span><span class="string">"***"</span></span><br></pre></td></tr></table></figure>
-<p>修改密码</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl  change_password  root 654321 #newpasswd</span><br><span class="line">Changing password <span class="keyword">for</span><span class="built_in"> user </span><span class="string">"root"</span></span><br></pre></td></tr></table></figure>
-<p>用户授权</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_permissions -<span class="selector-tag">p</span> / root <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span> #root用户可管理vhost <span class="string">"/"</span></span><br></pre></td></tr></table></figure>
-<p>查看用户列表</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rabbitmqctl</span> list_users</span><br></pre></td></tr></table></figure>
-<p>清除权限</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl  <span class="keyword">clear</span>_permissions  -p /  *** <span class="comment">#*处为用户</span></span><br></pre></td></tr></table></figure>
-<p><em>提示</em>：以上操作均可使用web界面管理</p>
-
+        
+          <a class="article-more-a" href="/2018/09/20/rabbitmq集群组建/#more">more >></a>
+        
       
 
       
